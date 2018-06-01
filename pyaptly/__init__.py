@@ -1791,6 +1791,14 @@ def cmd_mirror_create(cfg, mirror_name, mirror_config):
     if 'udeb' in mirror_config and mirror_config['udeb']:
         aptly_cmd.append('-with-udebs')
 
+    if 'filter' in mirror_config and mirror_config['filter']:
+        aptly_cmd.append('-filter=' + mirror_config['filter'])
+
+    if 'filter-with-deps' in mirror_config and mirror_config['filter-with-deps']:
+        aptly_cmd.append('-filter-with-deps')
+    else:
+        aptly_cmd.append('-filter-with-deps=false')
+
     if 'architectures' in mirror_config:
         aptly_cmd.append('-architectures={0}'.format(
             ','.join(unit_or_list_to_list(mirror_config['architectures']))
