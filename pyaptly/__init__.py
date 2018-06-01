@@ -936,6 +936,7 @@ def publish_cmd_create(cfg,
 
     has_source = False
     num_sources = 0
+    components = []
 
     for conf, conf_value in publish_config.items():
 
